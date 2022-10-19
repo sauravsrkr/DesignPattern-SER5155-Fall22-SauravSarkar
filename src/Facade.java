@@ -11,7 +11,8 @@ public class Facade {
 	private Person thePerson;
 
 	public boolean login() {
-		return false;
+		Login credentials = new Login();
+		return credentials.login();
 	}
 
 	public void addTrading() {
