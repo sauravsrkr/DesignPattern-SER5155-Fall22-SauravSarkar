@@ -6,15 +6,24 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Login {
+
+    int userType;
     public boolean login() {
         // Take user input
         Scanner s = new Scanner(System.in);
-        System.out.println("Please enter user type: \n [ 0 ----- Buyer ] \n [ 1 ----- Seller ]");
+        System.out.println("\nPlease enter user type: \n [ 0 ----- Buyer ] \n [ 1 ----- Seller ]");
         int userType = s.nextInt();
         s.nextLine();
-        File file = switch (userType) {
-            case 0 -> new File("./src/BuyerInfo.txt");
-            case 1 -> new File("./src/SellerInfo.txt");
+        File file;
+        switch (userType) {
+            case 0 -> {
+                file = new File("./src/BuyerInfo.txt");
+                this.userType = 0;
+            }
+            case 1 -> {
+                file = new File("./src/SellerInfo.txt");
+                this.userType = 1;
+            }
             default -> throw new IllegalArgumentException("Invalid User Type Selected");
         };
         Map<String, String> users = new HashMap<>();
@@ -41,7 +50,6 @@ public class Login {
             return true;
         } else {
             System.out.print("Login Failed");
-            System.exit(1);
             return false;
         }
 
