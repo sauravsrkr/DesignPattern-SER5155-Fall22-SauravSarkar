@@ -13,8 +13,10 @@ public class Buyer extends Person {
 		System.out.println("******* Factory Pattern ******* is implemented here. \n");
 		if (theLevel == 0) {
 			this.productMenu = new MeatProductMenu();
+			System.out.println("Meat Product Menu Initialized\n");
 		} else {
 			this.productMenu = new ProduceProductMenu();
+			System.out.println("Produce Product Menu Initialized\n");
 		}
 		return this.productMenu;
 	}

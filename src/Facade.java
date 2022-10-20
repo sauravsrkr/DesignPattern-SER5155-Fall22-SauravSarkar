@@ -22,9 +22,12 @@ public class Facade {
         boolean loginSuccess = cred.login();
         if (loginSuccess) {
             this.userType = cred.userType;
+            System.out.println("\n******* Bridge Pattern ******* is implemented here. \n");
             if (userType == 0) {
                 person = new Buyer();
+                System.out.println("Buyer login successfully\n");
             } else {
+                System.out.println("Seller login successfully\n");
                 person = new Seller();
             }
         } else {
@@ -82,7 +85,6 @@ public class Facade {
     }
 
     public void productSelection() {
-        System.out.println("\n******* Bridge Pattern ******* is implemented here. \n");
         System.out.println("Select type of Product ");
         Scanner scanner = new Scanner(System.in);
         System.out.println("0 : Meat");
@@ -95,7 +97,6 @@ public class Facade {
         nProductCategory = typeOfProductSelected;
         if (typeOfProductSelected == 0 || typeOfProductSelected == 1) {
             person.createProductMenu(nProductCategory).showMenu();
-            productSelection();
         } else {
             productSelection();
         }

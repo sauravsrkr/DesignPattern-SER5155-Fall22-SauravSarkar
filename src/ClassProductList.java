@@ -8,6 +8,15 @@ public class ClassProductList extends ArrayList<Product> {
 
     private ProductIterator productIterator;
 
+    public ClassProductList() {
+        this.productIterator = new ProductIterator(this);
+    }
+
+    public ProductIterator getIterator() {
+        return this.productIterator;
+    }
+
+
     private ReminderVisitor reminderVisitor;
 
     private Product[] product;

@@ -1,8 +1,9 @@
 public class ProduceProductMenu implements ProductMenu {
 
     public void showMenu() {
-        for (Product p : Facade.theProductList) {
-            String[] split = p.name.split(":");
+        System.out.println("\n******* Iterator Pattern ******* is implemented here. \n");
+        while (Facade.theProductList.getIterator().hasNext()) {
+            String[] split = Facade.theProductList.getIterator().next().name.split(":");
             if (split[0].equals("Produce"))
                 System.out.println("Produce Product : " + split[1]);
         }

@@ -11,9 +11,11 @@ public class Seller extends Person {
 	public ProductMenu createProductMenu(int theLevel) {
 		System.out.println("******* Factory Pattern ******* is implemented here. \n");
 		if (theLevel == 0) {
-			productMenu = new MeatProductMenu();
+			this.productMenu = new MeatProductMenu();
+			System.out.println("Meat Product Menu Initialized\n");
 		} else {
-			productMenu = new ProduceProductMenu();
+			this.productMenu = new ProduceProductMenu();
+			System.out.println("Produce Product Menu Initialized\n");
 		}
 		return productMenu;
 	}
