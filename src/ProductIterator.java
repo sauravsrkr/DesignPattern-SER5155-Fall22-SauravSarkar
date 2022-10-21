@@ -23,7 +23,7 @@ public class ProductIterator implements ListIterator {
     }
 
     public void moveToHead() {
-
+        this.index = 0;
     }
 
     public void remove() {

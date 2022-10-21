@@ -7,7 +7,6 @@ public abstract class NodeVisitor {
 	}
 
 	public void visitFacade(Facade facade) {
-
 	}
 
 }
