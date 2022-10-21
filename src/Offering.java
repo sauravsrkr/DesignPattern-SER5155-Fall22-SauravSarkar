@@ -1,5 +1,7 @@
 public class Offering {
+    String offering;
 
-	private OfferingList offeringList;
-
+    public Offering(String input) {
+        offering = input;
+    }
 }

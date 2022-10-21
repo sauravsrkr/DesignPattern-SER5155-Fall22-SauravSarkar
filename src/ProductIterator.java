@@ -9,7 +9,6 @@ public class ProductIterator implements ListIterator {
     }
 
     public boolean hasNext() {
-        boolean result = false;
         return this.index < classProductList.size();
     }
 
