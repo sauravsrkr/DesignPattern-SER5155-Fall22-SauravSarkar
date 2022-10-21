@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Login {
 
     int userType;
+    String userName;
     public boolean login() {
         // Take user input
         Scanner s = new Scanner(System.in);
@@ -47,6 +48,7 @@ public class Login {
     private boolean validateCredentials(Map<String, String> users, String username, String password) {
         if (users.containsKey(username) && users.get(username).equals(password)) {
             System.out.println("Login Successful");
+            this.userName = username;
             return true;
         } else {
             System.out.print("Login Failed");

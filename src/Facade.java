@@ -15,6 +15,7 @@ public class Facade {
     private Product theSelectedProduct;
 
     int nProductCategory;
+    String userName;
 
     // Initilize ClassProductList
     ClassProductList theProductList = new ClassProductList();
@@ -30,6 +31,7 @@ public class Facade {
         boolean loginSuccess = cred.login();
         if (loginSuccess) {
             this.userType = cred.userType;
+            this.userName = cred.userName;
             System.out.println("\n******* Bridge Pattern ******* is implemented here. \n");
             if (userType == 0) {
                 person = new Buyer();
@@ -48,7 +50,9 @@ public class Facade {
     }
 
     public void viewTrading() {
-
+        Trading t = new Trading(this);
+        ReminderVisitor rv = new ReminderVisitor();
+        rv.visitTrading(this.userName);
     }
 
     public void decideBidding() {
@@ -102,15 +106,16 @@ public class Facade {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             if (userType == 0) {
-                System.out.println("\nSelect 1) Show Menu 2) View Buyer Offers 3) Log Out");
+                System.out.println("\nSelect 1) Show Menu 2) View Buyer Offers 3) View Trading 4) Log Out");
             } else {
-                System.out.println("\nSelect 1) Show Menu 2) View Seller Offerings 3) Log Out");
+                System.out.println("\nSelect 1) Show Menu 2) View Seller Offerings 3) View Trading 3) Log Out");
             }
             int selectedOption = scanner.nextInt();
             switch (selectedOption) {
                 case 1 -> showMenu();
                 case 2 -> viewOffering();
-                case 3 -> System.exit(1);
+                case 3 -> viewTrading();
+                case 4 -> System.exit(1);
             }
         }
     }
