@@ -1,21 +1,34 @@
 public class ProductIterator implements ListIterator {
 
-	private ClassProductList classProductList;
+    private final ClassProductList classProductList;
+    private int index;
 
-	public boolean hasNext() {
-		return false;
-	}
+    public ProductIterator(ClassProductList classProductList) {
+        this.classProductList = classProductList;
+        this.index = 0;
+    }
 
-	public Product next() {
-		return null;
-	}
+    public boolean hasNext() {
+        boolean result = false;
+        return this.index < classProductList.size();
+    }
 
-	public void moveToHead() {
+    public Product next() {
+        Product p = null;
+        if (this.hasNext()) {
+            p = classProductList.get(index);
+        }
+        index += 1;
+        return p;
+    }
 
-	}
+    public void moveToHead() {
 
-	public void remove() {
+    }
 
-	}
+    public void remove() {
+        classProductList.remove(index);
+        index--;
+    }
 
 }
