@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Facade {
+
+    // Constructor for Facade
     public Facade() {
         System.out.println("\n\n******* Facade Pattern ******* is implemented here. \n");
         createProductList();
@@ -13,10 +15,12 @@ public class Facade {
 
     int nProductCategory;
 
-    static ClassProductList theProductList = new ClassProductList();
+    // Initilize ClassProductList
+    ClassProductList theProductList = new ClassProductList();
 
     Person person;
 
+    // Login validates user using bridge pattern
     public void login() {
         Login cred = new Login();
         boolean loginSuccess = cred.login();
@@ -63,6 +67,7 @@ public class Facade {
 
     }
 
+    // Initializes the product list after login
     public void createProductList() {
         try {
             theProductList.addProduct("./src/ProductInfo.txt");
@@ -79,12 +84,8 @@ public class Facade {
         return null;
     }
 
+    // productOperation - Allows console UI for further processing of PTBS system
     public void productOperation() {
-
-
-    }
-
-    public void productSelection() {
         System.out.println("Select type of Product ");
         Scanner scanner = new Scanner(System.in);
         System.out.println("0 : Meat");
@@ -92,13 +93,13 @@ public class Facade {
         int typeOfProductSelected = scanner.nextInt();
         if (typeOfProductSelected > 1 || typeOfProductSelected < 0) {
             System.out.println("please enter a valid number");
-            productSelection();
+            productOperation();
         }
         nProductCategory = typeOfProductSelected;
         if (typeOfProductSelected == 0 || typeOfProductSelected == 1) {
-            person.createProductMenu(nProductCategory).showMenu();
+            person.createProductMenu(nProductCategory).showMenu(this);
         } else {
-            productSelection();
+            productOperation();
         }
     }
 

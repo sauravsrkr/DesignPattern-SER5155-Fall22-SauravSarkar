@@ -4,6 +4,7 @@ import java.util.List;
 public class Product {
 	String name;
 	List<Product> productList = new ArrayList<>();
+
 	public Product(String input) {
 		name = input;
 	}
@@ -17,5 +18,9 @@ public class Product {
 
 	public String toString() {
 		return name;
+	}
+
+	public Trading getTrading() {
+		return trading;
 	}
 }

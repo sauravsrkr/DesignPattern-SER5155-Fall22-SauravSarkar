@@ -8,6 +8,7 @@ public class ClassProductList extends ArrayList<Product> {
 
     private ProductIterator productIterator;
 
+    // ClassProductList intilizes the product iterator
     public ClassProductList() {
         this.productIterator = new ProductIterator(this);
     }
@@ -25,6 +26,7 @@ public class ClassProductList extends ArrayList<Product> {
 
     }
 
+    // addProduct - loads all the products into memory
     public void addProduct(String inputPath) throws IOException {
         File inputFile = new File(inputPath);
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -32,7 +34,6 @@ public class ClassProductList extends ArrayList<Product> {
         while ((productItem = reader.readLine()) != null) {
             this.add(new Product(productItem));
         }
-//        System.out.println("The list of products - " + this);
     }
 
 }

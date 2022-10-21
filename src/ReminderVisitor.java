@@ -1,19 +1,25 @@
-public abstract class ReminderVisitor extends NodeVisitor {
+public class ReminderVisitor extends NodeVisitor {
 
-	private Reminder m_Reminder;
+    private Reminder m_Reminder;
 
-	private ClassProductList classProductList;
+    public ReminderVisitor(Reminder reminder) {
+        this.m_Reminder = reminder;
+    }
 
-	public void visitProduct(Product product) {
+    private ClassProductList classProductList;
 
-	}
+    public void visitProduct(Product product) {
+        visitTrading(product.getTrading());
+    }
 
-	public void visitTrading(Trading trading) {
+    public void visitTrading(Trading trading) {
 
-	}
+    }
 
-	public void visitFacade(Facade facade) {
-
-	}
+    public void visitFacade(Facade facade) {
+        for (Product product : facade.theProductList) {
+            visitProduct(product);
+        }
+    }
 
 }

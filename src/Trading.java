@@ -1,11 +1,11 @@
 public class Trading {
 
-	private Product product;
+    private Product product;
 
-	private OfferingList offeringList;
+    private OfferingList offeringList;
 
-	public void accept(NodeVisitor visitor) {
+    public void accept(NodeVisitor visitor) {
 
-	}
+    }
 
 }
