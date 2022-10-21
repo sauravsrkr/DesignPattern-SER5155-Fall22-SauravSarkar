@@ -7,6 +7,7 @@ public class Facade {
     public Facade() {
         System.out.println("\n\n******* Facade Pattern ******* is implemented here. \n");
         createProductList();
+        createOfferingList();
     }
 
     int userType;
@@ -17,6 +18,9 @@ public class Facade {
 
     // Initilize ClassProductList
     ClassProductList theProductList = new ClassProductList();
+
+    // Initilize OfferingProductList
+    OfferingList theOfferingList = new OfferingList();
 
     Person person;
 
@@ -76,6 +80,15 @@ public class Facade {
         }
     }
 
+    // Initializes the offering list after login
+    public void createOfferingList() {
+        try {
+            theOfferingList.addOfferings("./src/UserProduct.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void AttachProductToUser() {
 
     }
@@ -86,6 +99,23 @@ public class Facade {
 
     // productOperation - Allows console UI for further processing of PTBS system
     public void productOperation() {
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            if (userType == 0) {
+                System.out.println("\nSelect 1) Show Menu 2) View Buyer Offers 3) Log Out");
+            } else {
+                System.out.println("\nSelect 1) Show Menu 2) View Seller Offerings 3) Log Out");
+            }
+            int selectedOption = scanner.nextInt();
+            switch (selectedOption) {
+                case 1 -> showMenu();
+                case 2 -> viewOffering();
+                case 3 -> System.exit(1);
+            }
+        }
+    }
+
+    public void showMenu() {
         System.out.println("Select type of Product ");
         Scanner scanner = new Scanner(System.in);
         System.out.println("0 : Meat");
@@ -103,4 +133,8 @@ public class Facade {
         }
     }
 
+    // Visitor Pattern implemented inside Offering.
+    public void viewOffering() {
+        theOfferingList.showMenu(this);
+    }
 }
